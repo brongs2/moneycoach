@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import DuckImage from './assets/Duck.webp'; // src/assets 안에 있는 오리 이미지
+import DuckImage from './assets/Duck.webp'; // 오리 이미지 (src/assets 안)
+import CatImage from './assets/Cat.webp';   // 고양이 이미지 (src/assets 안)
 
 function App() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -11,6 +12,11 @@ function App() {
       title: '오리',
       content: '귀여운 오리',
     },
+    {
+      src: CatImage,
+      title: '고양이',
+      content: '귀여운 고양이',
+    },
   ];
 
   const handleClick = (index: number) => {
@@ -19,7 +25,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    // <div className="container">
       <div className="image-grid">
         {images.map((item, index) => (
           <div
@@ -35,7 +41,7 @@ function App() {
           </div>
         ))}
       </div>
-    </div>
+    // </div>
   );
 }
 
