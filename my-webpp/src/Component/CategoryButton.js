@@ -1,6 +1,6 @@
 import { useState} from 'react';
 import '../App.css';
-
+import { motion, AnimatePresence } from 'framer-motion'
 
 
 
@@ -32,24 +32,37 @@ export default function CategoryButton({items, title}){
        {selected} {isOpen ? "▲": "▼" } 
       </Button >
       {/* isOpen이 true일 때만 밑으로 내용 표시 */}
-      {isOpen && (
-        <div style={{ margin: "0px 20px", padding: "10px 20px", backgroundColor: "#fafafa" }}>
-          <ul>
-            {items.map((item) => (
-              <div>
-              <Button 
-              className = "category-option" 
-              key={item} 
-              value = {item} 
-              onClick={e => {
-                setSelected(e.target.value);
-                setIsOpen(!isOpen);
-              }}>{item}</Button>
-              </div>
-            ))}
-          </ul>
-        </div>
-      )}
+            {/* Animated dropdown for category options */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            style={{ overflow: 'hidden', margin: '0px 20px', backgroundColor: '#fafafa' }}
+          >
+            <ul style={{ padding: '10px 20px', margin: 0, listStyle: 'none' }}>
+              {items.map((item) => (
+                <li key={item} style={{ marginBottom: '10px' }}>
+                  <motion.button
+                    className="category-option"
+                    value={item}
+                    onClick={e => {
+                      setSelected(e.target.value);
+                      setIsOpen(false);
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {item}
+                  </motion.button>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
