@@ -32,7 +32,7 @@ export default function CategoryButton({items, title}){
        {selected} {isOpen ? "▲": "▼" } 
       </Button >
       {/* isOpen이 true일 때만 밑으로 내용 표시 */}
-            {/* Animated dropdown for category options */}
+        {/* Animated dropdown for category options */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div

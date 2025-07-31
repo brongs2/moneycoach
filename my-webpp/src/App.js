@@ -11,6 +11,7 @@ export default function MyApp(){
   const cat =  { name: "음악", items: ["K-POP", "락", "재즈"]};
   const cat2 =  { name: "음악", items: ["K-POP", "락", "재즈"]};
   const cat3 =  { name: "음악", items: ["K-POP", "락", "재즈"]};
+  
 
   return(
     <>
