@@ -33,7 +33,7 @@ export default function CategoryButton({items, title}){
       </Button >
       {/* isOpen이 true일 때만 밑으로 내용 표시 */}
       {isOpen && (
-        <div style={{ padding: "10px 20px", backgroundColor: "#fafafa" }}>
+        <div style={{ margin: "0px 20px", padding: "10px 20px", backgroundColor: "#fafafa" }}>
           <ul>
             {items.map((item) => (
               <div>
